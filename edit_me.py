@@ -1,15 +1,17 @@
 
-def find_max(lst):
-    """return the maximum element"""
+def monotonic(lst):
+    """Return True if lst is monotonic; return False, otherwise."""
 
-    current_max = lst[0]
+    increasing = decreasing = True
 
-    #
-    #  YOUR CODE GOES HERE
-    #
 
-    return current_max
+    for i in range(1, len(lst)):
+        if lst[i] > lst[i - 1]:
+            decreasing = False
+        if lst[i] < lst[i - 1]:
+            increasing = False
 
-test_list = [2112*i % 2024 for i in range(10000)]
-
-print(find_max(test_list))
+    return increasing or decreasing 
+print(monotonic([1,3,5,9]))#True
+print(monotonic([1,3,5,4]))#false
+#
